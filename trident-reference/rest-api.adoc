@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: trident-reference/rest-api.html 
+keywords: rest api, get, post, json, object, backends 
+summary: 'È possibile utilizzare l"endpoint REST direttamente se si preferisce interagire con l"API REST di Astra Trident.' 
+---
+= API REST di Astra Trident
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Anche se link:tridentctl.html["comandi e opzioni tridentctl"] sono il modo più semplice per interagire con l'API REST di Astra Trident, puoi utilizzare direttamente l'endpoint REST, se preferisci.
+
+
+
+== Quando utilizzare l'API REST
+
+REST API è utile per le installazioni avanzate che utilizzano Astra Trident come binario standalone nelle implementazioni non Kubernetes.
+
+Per una maggiore sicurezza, Astra Trident `REST API` è limitato per impostazione predefinita a localhost quando viene eseguito all'interno di un pod. Per cambiare questo comportamento, è necessario impostare l'argomento di Astra Trident `-address` nella sua configurazione pod.
+
+
+
+== Utilizzo dell'API REST
+
+Per esempi di come vengono chiamate queste API, passare il (`-d`flag debug ). Per ulteriori informazioni, fare riferimento a link:../trident-managing-k8s/tridentctl.html["Gestisci Astra Trident usando tridentctl"].
+
+L'API funziona come segue:
+
+
+
+=== OTTIENI
+
+`GET <trident-address>/trident/v1/<object-type>`:: Elenca tutti gli oggetti di quel tipo.
+`GET <trident-address>/trident/v1/<object-type>/<object-name>`:: Ottiene i dettagli dell'oggetto denominato.
+
+
+
+
+=== POST
+
+`POST <trident-address>/trident/v1/<object-type>`:: Crea un oggetto del tipo specificato.
++
+--
+* Richiede una configurazione JSON per la creazione dell'oggetto. Per le specifiche di ciascun tipo di oggetto, fare riferimento alla link:../trident-managing-k8s/tridentctl.html["Gestisci Astra Trident usando tridentctl"].
+* Se l'oggetto esiste già, il comportamento varia: I backend aggiornano l'oggetto esistente, mentre tutti gli altri tipi di oggetto non riescono a eseguire l'operazione.
+
+
+--
+
+
+
+
+=== ELIMINARE
+
+`DELETE <trident-address>/trident/v1/<object-type>/<object-name>`:: Elimina la risorsa denominata.
++
+--
+
+NOTE: I volumi associati ai backend o alle classi di storage continueranno ad esistere; questi devono essere cancellati separatamente. Per ulteriori informazioni, fare riferimento a link:../trident-managing-k8s/tridentctl.html["Gestisci Astra Trident usando tridentctl"].
+
+--
+

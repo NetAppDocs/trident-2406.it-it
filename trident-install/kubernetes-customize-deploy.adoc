@@ -1,0 +1,259 @@
+---
+sidebar: sidebar 
+permalink: trident-get-started/kubernetes-customize-deploy.html 
+keywords: deploy, trident, methods, operator, tridentctl, helm, attributes, customize, tridentorchestrator, smb, windows 
+summary: 'L"operatore Trident consente di personalizzare il modo in cui Astra Trident viene installato utilizzando gli attributi nella `TridentOrchestrator` specifica.' 
+---
+= Personalizzare l'installazione dell'operatore Trident
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'operatore Trident consente di personalizzare l'installazione di Astra Trident utilizzando gli attributi nelle `TridentOrchestrator` specifiche. Se si desidera personalizzare l'installazione oltre gli `TridentOrchestrator` argomenti consentiti, utilizzare `tridentctl` per generare manifesti YAML personalizzati da modificare in base alle necessità.
+
+
+
+== Comprensione dei pod controller e dei pod di nodi
+
+Astra Trident viene eseguito come singolo pod controller, più un pod di nodi su ciascun nodo di lavoro nel cluster. Il pod nodo deve essere in esecuzione su qualsiasi host in cui si desidera montare un volume Astra Trident.
+
+Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/["selettori di nodi"^] e link:https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/["tollerazioni e contamini"^] sono utilizzati per vincolare un pod all'esecuzione su un nodo specifico o preferito. Utilizzando `ControllerPlugin` e `NodePlugin`, è possibile specificare vincoli e sostituzioni.
+
+* Il plug-in del controller gestisce il provisioning e la gestione dei volumi, ad esempio snapshot e ridimensionamento.
+* Il plug-in del nodo gestisce il collegamento dello storage al nodo.
+
+
+
+
+== Opzioni di configurazione
+
+
+WARNING: `spec.namespace` Viene specificato in `TridentOrchestrator` per indicare lo spazio dei nomi in cui è installato Astra Trident. Questo parametro *non può essere aggiornato dopo l'installazione di Astra Trident*. Se si tenta di eseguire questa operazione, `TridentOrchestrator` lo stato viene modificato in `Failed`. Astra Trident non deve essere migrato tra spazi dei nomi.
+
+Questa tabella fornisce i dettagli degli `TridentOrchestrator` attributi.
+
+[cols="1,2,1"]
+|===
+| Parametro | Descrizione | Predefinito 
+
+
+| `namespace` | Spazio dei nomi in cui installare Astra Trident | `"default"` 
+
+
+| `debug` | Attiva il debug per Astra Trident | `false` 
+
+
+| `enableForceDetach` | `ontap-san` e `ontap-san-economy` solo. Funziona con Kubernetes non-Graged Node Shutdown (NGNS) per consentire agli amministratori del cluster di migrare in sicurezza i carichi di lavoro con volumi montati su nuovi nodi in caso di problemi di integrità di un nodo. | `false` 
+
+
+| `windows` | L'impostazione su `true` attiva l'installazione sui nodi di lavoro Windows. | `false` 
+
+
+| `cloudProvider` | Impostato su `"Azure"` quando si utilizzano identità gestite o un'identità cloud su un cluster AKS. Impostato su "AWS" quando si utilizza un'identità cloud su un cluster EKS. | `""` 
+
+
+| `cloudIdentity` | Impostare sull'identità del workload ("Azure.workload.Identity/client-id: Xxxxxxxx-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx") quando si utilizza l'identità cloud su un cluster AKS. Impostato sul ruolo AWS IAM ("'eks.amazonaws.com/role-arn: arn:AWS:iam::123456:role/astrattadent-role") quando si utilizza l'identità cloud su un cluster EKS. | `""` 
+
+
+| `IPv6` | Installare Astra Trident su IPv6 | falso 
+
+
+| `k8sTimeout` | Timeout per le operazioni Kubernetes | `30sec` 
+
+
+| `silenceAutosupport` | Non inviare pacchetti AutoSupport automaticamente a NetApp | `false` 
+
+
+| `autosupportImage` | L'immagine del contenitore per la telemetria AutoSupport | `"netapp/trident-autosupport:24.06"` 
+
+
+| `autosupportProxy` | Indirizzo/porta di un proxy per l'invio di telemetria AutoSupport | `"http://proxy.example.com:8888"` 
+
+
+| `uninstall` | Flag utilizzato per disinstallare Astra Trident | `false` 
+
+
+| `logFormat` | Formato di registrazione Astra Trident da utilizzare [text,json] | `"text"` 
+
+
+| `tridentImage` | Immagine Astra Trident da installare | `"netapp/trident:24.06"` 
+
+
+| `imageRegistry` | Percorso al registro interno, del formato
+`<registry FQDN>[:port][/subpath]` | `"k8s.gcr.io/sig-storage"` (Kubernetes 1,19+) o. `"quay.io/k8scsi"` 
+
+
+| `kubeletDir` | Percorso della directory del kubelet sull'host | `"/var/lib/kubelet"` 
+
+
+| `wipeout` | Un elenco di risorse da eliminare per eseguire una rimozione completa di Astra Trident |  
+
+
+| `imagePullSecrets` | Secrets (segreti) per estrarre immagini da un registro interno |  
+
+
+| `imagePullPolicy` | Imposta il criterio di pull dell'immagine per l'operatore Trident. I valori validi sono: 
+`Always` Per tirare sempre l'immagine. 
+`IfNotPresent` per estrarre l'immagine solo se non esiste già sul nodo. 
+`Never` per non tirare mai l'immagine. | `IfNotPresent` 
+
+
+| `controllerPluginNodeSelector` | Selettori di nodi aggiuntivi per i pod. Segue lo stesso formato di `pod.spec.nodeSelector`. | Nessuna impostazione predefinita; opzionale 
+
+
+| `controllerPluginTolerations` | Ignora le tolleranze Kubernetes per i pod. Segue lo stesso formato di `pod.spec.Tolerations`. | Nessuna impostazione predefinita; opzionale 
+
+
+| `nodePluginNodeSelector` | Selettori di nodi aggiuntivi per i pod. Segue lo stesso formato di `pod.spec.nodeSelector`. | Nessuna impostazione predefinita; opzionale 
+
+
+| `nodePluginTolerations` | Ignora le tolleranze Kubernetes per i pod. Segue lo stesso formato di `pod.spec.Tolerations`. | Nessuna impostazione predefinita; opzionale 
+|===
+
+NOTE: Per ulteriori informazioni sulla formattazione dei parametri del pod, fare riferimento alla sezione link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/["Assegnazione di pod ai nodi"^].
+
+
+
+=== Dettagli sulla forza di distacco
+
+Lo stacco forzato è disponibile solo per `ontap-san` e. `ontap-san-economy` Prima di attivare la funzione di force stach, è necessario attivare la funzione NGNS (non-aggraziate node shutdown) sul cluster Kubernetes. Per ulteriori informazioni, fare riferimento a link:https://kubernetes.io/docs/concepts/architecture/nodes/#non-graceful-node-shutdown["Kubernetes: Shutdown del nodo non aggraziato"^].
+
+
+WARNING: Poiché Astra Trident fa affidamento su Kubernetes NGNS, non rimuovere i `out-of-service` tag da un nodo non integro fino a quando tutti i carichi di lavoro non tollerabili non vengono ripianificati. L'applicazione o la rimozione sconsiderata della contaminazione può compromettere la protezione dei dati back-end.
+
+Quando l'amministratore del cluster Kubernetes ha applicato il `node.kubernetes.io/out-of-service=nodeshutdown:NoExecute` tag taint al nodo ed `enableForceDetach` è impostato su `true`, Astra Trident determina lo stato del nodo e:
+
+. Interrompere l'accesso i/o back-end per i volumi montati su quel nodo.
+. Contrassegnare l'oggetto nodo Astra Trident come `dirty` (non sicuro per le nuove pubblicazioni).
++
+
+NOTE: Il controller Trident rifiuterà le nuove richieste di volume di pubblicazione finché il nodo non viene riqualificato (dopo essere stato contrassegnato come `dirty`) dal pod di nodo Trident. Tutti i carichi di lavoro pianificati con un PVC montato (anche dopo che il nodo del cluster è integro e pronto) non saranno accettati fino a quando Astra Trident non sarà in grado di verificare il nodo `clean` (sicuro per le nuove pubblicazioni).
+
+
+
+Quando lo stato del nodo viene ripristinato e la contaminazione viene rimossa, Astra Trident:
+
+. Identificare e pulire i percorsi pubblicati obsoleti sul nodo.
+. Se il nodo è in uno `cleanable` stato (il tag out-of-service è stato rimosso e il nodo è in `Ready` stato) e tutti i percorsi obsoleti e pubblicati sono puliti, Astra Trident riammetterà il nodo come `clean` e consentirà ai nuovi volumi pubblicati di accedere al nodo.
+
+
+
+
+== Configurazioni di esempio
+
+È possibile utilizzare gli attributi in <<Opzioni di configurazione>> durante la definizione `TridentOrchestrator` per personalizzare l'installazione.
+
+.Configurazione personalizzata di base
+[%collapsible]
+====
+Questo è un esempio per un'installazione personalizzata di base.
+
+[listing]
+----
+cat deploy/crds/tridentorchestrator_cr_imagepullsecrets.yaml
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  imagePullSecrets:
+  - thisisasecret
+----
+====
+.Selettori di nodo
+[%collapsible]
+====
+Questo esempio installa Astra Trident con selettori di nodo.
+
+[listing]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  controllerPluginNodeSelector:
+    nodetype: master
+  nodePluginNodeSelector:
+    storage: netapp
+----
+====
+.Nodi di lavoro Windows
+[%collapsible]
+====
+In questo esempio viene installato Astra Trident su un nodo di lavoro Windows.
+
+[listing]
+----
+cat deploy/crds/tridentorchestrator_cr.yaml
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  windows: true
+----
+====
+.Identità gestite su un cluster AKS
+[%collapsible]
+====
+Questo esempio installa Astra Trident per abilitare le identità gestite su un cluster AKS.
+
+[listing]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  cloudProvider: "Azure"
+----
+====
+.Identità cloud su un cluster AKS
+[%collapsible]
+====
+Questo esempio installa Astra Trident per l'utilizzo con un'identità cloud su un cluster AKS.
+
+[listing]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  cloudProvider: "Azure"
+  cloudIdentity: 'azure.workload.identity/client-id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx'
+
+----
+====
+.Identità cloud su un cluster EKS
+[%collapsible]
+====
+Questo esempio installa Astra Trident per l'utilizzo con un'identità cloud su un cluster AKS.
+
+[listing]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  cloudProvider: "AWS"
+  cloudIdentity: "'eks.amazonaws.com/role-arn: arn:aws:iam::123456:role/astratrident-role'"
+----
+====

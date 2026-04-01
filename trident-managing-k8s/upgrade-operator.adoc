@@ -21,7 +21,7 @@ summary: 'È possibile aggiornare facilmente un"installazione Astra Trident util
 È possibile eseguire l'aggiornamento da un'installazione dell'operatore Trident definita dall'ambito del cluster a un'altra installazione dell'operatore Trident definita dal cluster. Tutte le versioni di Astra Trident 21.01 e successive utilizzano un operatore con ambito cluster.
 
 
-NOTE: Per eseguire l'aggiornamento da Astra Trident installato usando l'operatore con ambito namespace (versioni da 20,07 a 20,10), usa le istruzioni di upgrade link:../earlier-versions.html["versione installata"]di Astra Trident.
+NOTE: Per eseguire l'aggiornamento da Astra Trident installato utilizzando l'operatore namespace-scoped (versioni 20.07 attraverso 20.10), utilizzare le istruzioni di aggiornamento per la versione di Astra Trident installata.
 
 .A proposito di questa attività
 Trident fornisce un file bundle da utilizzare per installare l'operatore e creare oggetti associati per la versione di Kubernetes.

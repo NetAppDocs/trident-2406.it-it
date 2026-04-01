@@ -31,8 +31,8 @@ Supporto autonomo:: La documentazione di Astra Trident è disponibile per i mesi
 
 
  a| 
-link:https://docs.netapp.com/us-en/trident/index.html["24,06"^]
-| Giugno 2025 | Giugno 2026 | Giugno 2027 
+link:https://docs.netapp.com/us-en/trident-2406/index.html["24,06"^]
+| -- | Giugno 2026 | Giugno 2027 
 
 
  a| 
@@ -42,37 +42,22 @@ link:https://docs.netapp.com/us-en/trident/index.html["24,02"^]
 
  a| 
 link:https://docs.netapp.com/us-en/trident-2310/index.html["23,10"^]
-| -- | Ottobre 2025 | Ottobre 2026 
+| -- | -- | Ottobre 2026 
 
 
  a| 
 link:https://docs.netapp.com/us-en/trident-2307/index.html["23,07"^]
-| -- | Luglio 2025 | Luglio 2026 
+| -- | -- | Luglio 2026 
 
 
  a| 
 link:https://docs.netapp.com/us-en/trident-2304/index.html["23,04"^]
-| -- | Aprile 2025 | Aprile 2026 
+| -- | -- | Aprile 2026 
 
 
  a| 
 link:https://docs.netapp.com/us-en/trident-2301/index.html["23,01"^]
 | -- | -- | Gennaio 2026 
-
-
- a| 
-link:https://docs.netapp.com/us-en/trident-2210/index.html["22,10"^]
-| -- | -- | Ottobre 2025 
-
-
- a| 
-link:https://docs.netapp.com/us-en/trident-2207/index.html["22,07"^]
-| -- | -- | Luglio 2025 
-
-
- a| 
-link:https://docs.netapp.com/us-en/trident-2204/index.html["22,04"^]
-| -- | -- | Aprile 2025 
 |===
 
 

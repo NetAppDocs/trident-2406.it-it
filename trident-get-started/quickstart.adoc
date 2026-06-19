@@ -22,7 +22,7 @@ NOTE: Per Docker, fare riferimento alla sezione link:../trident-docker/deploy-do
 Astra Trident offre diversi metodi di installazione e modalità ottimizzati per una vasta gamma di ambienti e organizzazioni.
 
 [role="quick-margin-para"]
-link:../trident-get-started/kubernetes-deploy.html["Installare Astra Trident"]
+link:../trident-install/kubernetes-deploy.html["Installare Astra Trident"]
 
 .image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Due"] Preparare il nodo di lavoro
 [role="quick-margin-para"]

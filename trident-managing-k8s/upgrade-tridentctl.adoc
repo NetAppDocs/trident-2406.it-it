@@ -18,7 +18,7 @@ summary: 'È possibile aggiornare facilmente un"installazione esistente di Astra
 La disinstallazione e la reinstallazione di Astra Trident funge da aggiornamento. Quando si disinstalla Trident, i PVC (Persistent Volume Claim) e PV (Persistent Volume) utilizzati dall'implementazione di Astra Trident non vengono cancellati. I PVS già forniti resteranno disponibili mentre Astra Trident è offline e Astra Trident effettuerà il provisioning dei volumi per i PVC creati nel frattempo una volta tornati online.
 
 .Prima di iniziare
-link:upgrade-trident.html#select-an-upgrade-method["Selezionare un metodo di aggiornamento"]Prima di eseguire l'aggiornamento mediante `tridentctl`.
+Rivedi link:upgrade-trident.html#step-3-select-an-upgrade-method["Selezionare un metodo di aggiornamento"] prima di aggiornare usando `tridentctl`.
 
 .Fasi
 . Eseguire il comando uninstall in `tridentctl` per rimuovere tutte le risorse associate ad Astra Trident, ad eccezione dei CRD e degli oggetti correlati.
@@ -27,7 +27,7 @@ link:upgrade-trident.html#select-an-upgrade-method["Selezionare un metodo di agg
 ----
 ./tridentctl uninstall -n <namespace>
 ----
-. Reinstallare Astra Trident. Fare riferimento alla link:../trident-get-started/kubernetes-deploy-tridentctl.html["Installare Astra Trident usando tridentctl"].
+. Reinstalla Astra Trident. Consulta link:../trident-install/kubernetes-deploy-tridentctl.html["Installare Astra Trident usando tridentctl"].
 
 
 

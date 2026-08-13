@@ -16,9 +16,10 @@ Prima di utilizzare l'operatore Trident per aggiornare Astra Trident, devi compr
 
 
 
+[[trident-operator-upgrade-handling]]
 == Gestione dell'aggiornamento dell'operatore Trident
 
-Uno dei tanti link:../trident-get-install/kubernetes-deploy.html["Vantaggi dell'utilizzo dell'operatore Trident"] modi per installare e aggiornare Astra Trident è la gestione automatica degli oggetti Astra Trident e Kubernetes senza interrompere i volumi montati esistenti. In questo modo, Astra Trident può supportare gli aggiornamenti senza tempi di inattività, ovvero link:https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/["_rolling updates_"^]. In particolare, l'operatore Trident comunica con il cluster Kubernetes per:
+Uno dei tanti link:../trident-install/kubernetes-deploy.html["Vantaggi dell'utilizzo dell'operatore Trident"] modi per installare e aggiornare Astra Trident è la gestione automatica degli oggetti Astra Trident e Kubernetes senza interrompere i volumi montati esistenti. In questo modo, Astra Trident può supportare gli aggiornamenti senza tempi di inattività, ovvero link:https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/["_rolling updates_"^]. In particolare, l'operatore Trident comunica con il cluster Kubernetes per:
 
 * Eliminare e ricreare l'implementazione del controller Trident e il daemonSet del nodo.
 * Sostituisci il Controller Pod Trident e i pod di nodi Trident con nuove versioni.
@@ -30,10 +31,11 @@ Uno dei tanti link:../trident-get-install/kubernetes-deploy.html["Vantaggi dell'
 
 
 
-TIP: Per ulteriori informazioni sull'architettura di Astra Trident nel cluster Kubernetes, consulta link:../trident-get-started/intro.html#astra-trident-architecture["Architettura Astra Trident"].
+TIP: Per ulteriori informazioni sull'architettura di Astra Trident nel cluster Kubernetes, consulta link:../trident-get-started/architecture.html["Architettura di Trident"].
 
 
 
+[[operator-upgrade-workflow]]
 == Flusso di lavoro di aggiornamento dell'operatore
 
 Quando si avvia un aggiornamento utilizzando l'operatore Trident:

@@ -16,6 +16,7 @@ Scopri le funzionalità offerte da Astra Trident per la gestione dei volumi.
 
 
 
+[[managing-volumes]]
 == Gestione dei volumi
 
 Fai riferimento a quanto segue per scoprire come gestire i volumi con Astra Trident.

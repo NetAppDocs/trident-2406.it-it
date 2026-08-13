@@ -16,6 +16,7 @@ L'operatore Trident consente di personalizzare l'installazione di Astra Trident 
 
 
 
+[[understanding-controller-pods-and-node-pods]]
 == Comprensione dei pod controller e dei pod di nodi
 
 Astra Trident viene eseguito come singolo pod controller, più un pod di nodi su ciascun nodo di lavoro nel cluster. Il pod nodo deve essere in esecuzione su qualsiasi host in cui si desidera montare un volume Astra Trident.
@@ -28,6 +29,7 @@ Kubernetes link:https://kubernetes.io/docs/concepts/scheduling-eviction/assign-p
 
 
 
+[[configuration-options]]
 == Opzioni di configurazione
 
 
@@ -117,6 +119,7 @@ NOTE: Per ulteriori informazioni sulla formattazione dei parametri del pod, fare
 
 
 
+[[details-about-force-detach]]
 === Dettagli sulla forza di distacco
 
 Lo stacco forzato è disponibile solo per `ontap-san` e. `ontap-san-economy` Prima di attivare la funzione di force stach, è necessario attivare la funzione NGNS (non-aggraziate node shutdown) sul cluster Kubernetes. Per ulteriori informazioni, fare riferimento a link:https://kubernetes.io/docs/concepts/architecture/nodes/#non-graceful-node-shutdown["Kubernetes: Shutdown del nodo non aggraziato"^].
@@ -142,6 +145,7 @@ Quando lo stato del nodo viene ripristinato e la contaminazione viene rimossa, A
 
 
 
+[[sample-configurations]]
 == Configurazioni di esempio
 
 È possibile utilizzare gli attributi in <<Opzioni di configurazione>> durante la definizione `TridentOrchestrator` per personalizzare l'installazione.

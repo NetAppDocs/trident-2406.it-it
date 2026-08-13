@@ -12,10 +12,11 @@ summary: 'È possibile utilizzare l"endpoint REST direttamente se si preferisce 
 
 
 [role="lead"]
-Anche se link:tridentctl.html["comandi e opzioni tridentctl"] sono il modo più semplice per interagire con l'API REST di Astra Trident, puoi utilizzare direttamente l'endpoint REST, se preferisci.
+Anche se link:../trident-managing-k8s/tridentctl.html["comandi e opzioni tridentctl"] sono il modo più semplice per interagire con l'Astra Trident REST API, puoi usare direttamente l'endpoint REST se preferisci.
 
 
 
+[[when-to-use-the-rest-api]]
 == Quando utilizzare l'API REST
 
 REST API è utile per le installazioni avanzate che utilizzano Astra Trident come binario standalone nelle implementazioni non Kubernetes.
@@ -24,6 +25,7 @@ Per una maggiore sicurezza, Astra Trident `REST API` è limitato per impostazion
 
 
 
+[[using-rest-api]]
 == Utilizzo dell'API REST
 
 Per esempi di come vengono chiamate queste API, passare il (`-d`flag debug ). Per ulteriori informazioni, fare riferimento a link:../trident-managing-k8s/tridentctl.html["Gestisci Astra Trident usando tridentctl"].
@@ -32,6 +34,7 @@ L'API funziona come segue:
 
 
 
+[[get]]
 === OTTIENI
 
 `GET <trident-address>/trident/v1/<object-type>`:: Elenca tutti gli oggetti di quel tipo.
@@ -40,6 +43,7 @@ L'API funziona come segue:
 
 
 
+[[post]]
 === POST
 
 `POST <trident-address>/trident/v1/<object-type>`:: Crea un oggetto del tipo specificato.
@@ -54,6 +58,7 @@ L'API funziona come segue:
 
 
 
+[[delete]]
 === ELIMINARE
 
 `DELETE <trident-address>/trident/v1/<object-type>/<object-name>`:: Elimina la risorsa denominata.

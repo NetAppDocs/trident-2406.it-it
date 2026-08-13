@@ -16,6 +16,7 @@ Astra Trident ottimizza la gestione dello storage di Amazon FSX per NetApp ONTAP
 
 
 
+[[prerequisites]]
 == Prerequisiti
 
 Prima di configurare il componente aggiuntivo Astra Trident per AWS EKS, assicurati di disporre di quanto segue:
@@ -32,6 +33,7 @@ Prima di configurare il componente aggiuntivo Astra Trident per AWS EKS, assicur
 
 
 
+[[steps]]
 == Fasi
 
 . Sul tuo cluster EKS Kubernetes, accedi alla scheda *Add-on*.
@@ -71,6 +73,7 @@ image::../media/aws-eks-05.png[aws eks 05]
 
 
 
+[[installuninstall-the-astra-trident-eks-add-on-using-cli]]
 == Installare/disinstallare il componente aggiuntivo Astra Trident EKS utilizzando la CLI
 
 .Installare il componente aggiuntivo Astra Trident EKS utilizzando la CLI:

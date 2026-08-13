@@ -16,6 +16,7 @@ Astra Trident è un progetto open source completamente supportato, gestito da Ne
 
 
 
+[[what-is-astra]]
 == Che cos'è Astra?
 
 Astra semplifica la gestione, la protezione e lo spostamento dei carichi di lavoro containerizzati ricchi di dati eseguiti su Kubernetes all'interno e tra cloud pubblici e on-premise.
@@ -26,6 +27,7 @@ Ulteriori informazioni su link:https://bluexp.netapp.com/astra["Astra o registra
 
 
 
+[[what-is-astra-trident]]
 == Che cos'è Astra Trident?
 
 Astra Trident permette il consumo e la gestione delle risorse di storage in tutte le più apprezzate piattaforme di storage NetApp, nel cloud pubblico o on-premise, incluso ONTAP (AFF, FAS, Select, cloud, Amazon FSX per NetApp ONTAP), software Element (NetApp HCI, SolidFire), servizio Azure NetApp Files e Cloud Volumes Service su Google Cloud.
@@ -39,9 +41,10 @@ NOTE: Se è la prima volta che si utilizza Kubernetes, è necessario acquisire f
 
 
 
+[[take-the-astra-trident-test-drive]]
 == Fai il test drive di Astra Trident
 
-Per effettuare un test di guida, Richiedi l'accesso al tool "Easy Implementation and Clone Persistent Storage per i workload containerizzati" link:https://www.netapp.com/us/try-and-buy/test-drive/index.aspx["Test drive di NetApp"^] utilizzando un'immagine di laboratorio pronta all'uso. Il test drive fornisce un ambiente sandbox con un cluster Kubernetes a tre nodi e Astra Trident installato e configurato. Si tratta di un ottimo modo per familiarizzare con Astra Trident ed esplorare le sue funzionalità.
+Per effettuare una prova, richiedi l'accesso a "Easily Deploy and Clone Persistent Storage for Containerized Workloads" link:https://www.netapp.com/test-drives/["Test drive di NetApp"^] utilizzando un'immagine di laboratorio pronta all'uso. La prova offre un ambiente sandbox con un cluster Kubernetes a tre nodi e Astra Trident installato e configurato. Questo è un ottimo modo per familiarizzare con Astra Trident ed esplorarne le funzionalità.
 
 Un'altra opzione è link:https://kubernetes.io/docs/setup/independent/install-kubeadm/["Guida all'installazione di kubeadm"]fornita da Kubernetes.
 
@@ -50,6 +53,7 @@ NOTE: Non usare un cluster Kubernetes creato usando queste istruzioni in un ambi
 
 
 
+[[kubernetes-integration-with-netapp-products]]
 == Integrazione di Kubernetes con prodotti NetApp
 
 Il portfolio NetApp di prodotti storage si integra con molti aspetti di un cluster Kubernetes, fornendo funzioni avanzate di gestione dei dati, che migliorano funzionalità, capacità, performance e disponibilità dell'implementazione Kubernetes.
@@ -102,6 +106,7 @@ I sistemi ONTAP sono dotati di configurazioni all-flash, ibride o all-HDD e offr
 ====
 
 
+[[for-more-information]]
 == Per ulteriori informazioni
 
 * https://docs.netapp.com/us-en/astra-family/intro-family.html["Famiglia di prodotti NetApp Astra"^]

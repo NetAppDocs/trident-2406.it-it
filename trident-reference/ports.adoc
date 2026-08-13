@@ -16,6 +16,7 @@ Scopri di più sulle porte utilizzate da Astra Trident per le comunicazioni.
 
 
 
+[[astra-trident-ports]]
 == Porte Astra Trident
 
 Astra Trident comunica tramite le seguenti porte:

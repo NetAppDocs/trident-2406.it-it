@@ -16,6 +16,7 @@ summary: 'È possibile implementare manualmente l"operatore Trident per installa
 
 
 
+[[critical-information-about-astra-trident-24-06]]
 == Informazioni critiche su Astra Trident 24,06
 
 *È necessario leggere le seguenti informazioni critiche su Astra Trident.*
@@ -33,12 +34,13 @@ L'utilizzo di una configurazione non multipathing o di `find_multipaths: yes` un
 ====
 
 
+[[manually-deploy-the-trident-operator-and-install-trident]]
 == Implementare manualmente l'operatore Trident e installare Trident
 
 Verificate link:../trident-install/kubernetes-deploy.html["panoramica dell'installazione"] per assicurarvi di aver soddisfatto i prerequisiti di installazione e di aver selezionato l'opzione di installazione corretta per il vostro ambiente.
 
 .Prima di iniziare
-Prima di iniziare l'installazione, accedere all'host Linux e verificare che sia in corso la gestione di un funzionante link:requirements.html["Cluster Kubernetes supportato"^]e che si disponga del Privileges necessario.
+Prima di iniziare l'installazione, accedi all'host Linux e verifica che stia gestendo un link:../trident-get-started/requirements.html["Cluster Kubernetes supportato"^] funzionante e che tu disponga dei privilegi necessari.
 
 
 NOTE: Con OpenShift, utilizzare `oc` invece di `kubectl` tutti gli esempi che seguono e accedere come *system:admin* eseguendo prima `oc login -u system:admin` o `oc login -u kube-admin`.
@@ -69,6 +71,7 @@ kubectl run -i --tty ping --image=busybox --restart=Never --rm -- \
 ====
 
 
+[[step-1-download-the-trident-installer-package]]
 === Fase 1: Scaricare il pacchetto di installazione di Trident
 
 Il pacchetto di installazione di Astra Trident contiene tutto il necessario per implementare l'operatore Trident e installare Astra Trident. Scaricare ed estrarre la versione più recente del programma di installazione di Trident da link:https://github.com/NetApp/trident/releases/latest["La sezione _Assets_ su GitHub"^].
@@ -81,6 +84,7 @@ cd trident-installer
 ----
 
 
+[[step-2-create-the-tridentorchestrator-crd]]
 === Fase 2: Creare il `TridentOrchestrator` CRD
 
 Creare la `TridentOrchestrator` definizione di risorsa personalizzata (CRD). In seguito, verrà creata una `TridentOrchestrator` risorsa personalizzata. Utilizzare la versione CRD YAML appropriata in per creare il `TridentOrchestrator` CRD `deploy/crds`.
@@ -91,6 +95,7 @@ kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.1
 ----
 
 
+[[step-3-deploy-the-trident-operator]]
 === Fase 3: Implementare l'operatore Trident
 
 Il programma di installazione di Astra Trident fornisce un file bundle che può essere utilizzato per installare l'operatore e creare oggetti associati. Il file bundle è un modo semplice per implementare l'operatore e installare Astra Trident utilizzando una configurazione predefinita.
@@ -144,6 +149,7 @@ IMPORTANT: In un cluster Kubernetes dovrebbe esserci solo *un'istanza* dell'oper
 
 
 
+[[step-4-create-the-tridentorchestrator-and-install-trident]]
 === Fase 4: Creare `TridentOrchestrator` e installare Trident
 
 Ora puoi creare `TridentOrchestrator` e installare Astra Trident. Facoltativamente, è possibile link:kubernetes-customize-deploy.html["Personalizzare l'installazione di Trident"] utilizzare gli attributi nella `TridentOrchestrator` specifica.
@@ -190,12 +196,14 @@ Events:
 ----
 
 
+[[verify-the-installation]]
 == Verificare l'installazione
 
 Esistono diversi modi per verificare l'installazione.
 
 
 
+[[using-tridentorchestrator-status]]
 === Uso dello `TridentOrchestrator` stato
 
 Lo stato di `TridentOrchestrator` indica se l'installazione è riuscita e visualizza la versione di Trident installata. Durante l'installazione, lo stato di `TridentOrchestrator` cambia da `Installing` a `Installed`. Se si osserva `Failed` lo stato e l'operatore non è in grado di recuperare da solo, link:../troubleshooting.html["controllare i registri"].
@@ -228,6 +236,7 @@ Lo stato di `TridentOrchestrator` indica se l'installazione è riuscita e visual
 |===
 
 
+[[using-pod-creation-status]]
 === Utilizzo dello stato di creazione del pod
 
 È possibile verificare se l'installazione di Astra Trident è stata completata esaminando lo stato dei pod creati:
@@ -245,6 +254,7 @@ trident-operator-766f7b8658-ldzsv          1/1     Running   0           3m
 ----
 
 
+[[using-tridentctl]]
 === Uso `tridentctl`
 
 Puoi usare `tridentctl` per controllare la versione di Astra Trident installata.

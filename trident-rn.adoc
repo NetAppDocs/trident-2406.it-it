@@ -19,10 +19,12 @@ WARNING: Il `tridentctl` file binario per Linux fornito nel file zip del program
 
 
 
+[[whats-new-in-24-06]]
 == Novità del 24,06
 
 
 
+[[enhancements]]
 === Miglioramenti
 
 * **IMPORTANTE**: Il `limitVolumeSize` parametro ora limita le dimensioni di qtree/LUN nei driver ONTAP economy. Utilizzare il nuovo  `limitVolumePoolSize` parametro per controllare le dimensioni FlexVol in tali driver. (link:https://github.com/NetApp/trident/issues/341["Problema n. 341"]).
@@ -49,6 +51,7 @@ WARNING: Il `tridentctl` file binario per Linux fornito nel file zip del program
 
 
 
+[[fixes]]
 === Correzioni
 
 * Risolti i problemi di installazione di Astra Trident a causa di transazioni obsolete.
@@ -61,6 +64,7 @@ WARNING: Il `tridentctl` file binario per Linux fornito nel file zip del program
 
 
 
+[[deprecations]]
 === Dipendenze
 
 * Rimosso il supporto per Windows Server 2019 EOL.
@@ -68,10 +72,12 @@ WARNING: Il `tridentctl` file binario per Linux fornito nel file zip del program
 
 
 
+[[changes-in-24-02]]
 == Modifiche nel 24,02
 
 
 
+[[enhancements]]
 === Miglioramenti
 
 * Aggiunto supporto per Cloud Identity.
@@ -94,6 +100,7 @@ WARNING: Il `tridentctl` file binario per Linux fornito nel file zip del program
 
 
 
+[[fixes]]
 === Correzioni
 
 * Messaggi di avviso ACP fissi, quando ACP non è abilitato (link:https://github.com/NetApp/trident/issues/866["Problema n. 866"]).
@@ -102,6 +109,7 @@ WARNING: Il `tridentctl` file binario per Linux fornito nel file zip del program
 
 
 
+[[deprecations]]
 === Dipendenze
 
 * Rimosso il framework degli attestati in-toto dai manifesti di immagini multipiattaforma.
@@ -109,10 +117,12 @@ WARNING: Il `tridentctl` file binario per Linux fornito nel file zip del program
 
 
 
+[[changes-in-23-10]]
 == Modifiche nel 23,10
 
 
 
+[[fixes]]
 === Correzioni
 
 * Espansione del volume fissa se una nuova dimensione richiesta è inferiore alla dimensione del volume totale per i driver di archiviazione ONTAP-nas e ONTAP-nas-FlexGroup (link:https://github.com/NetApp/trident/issues/834["Problema n. 834"^]).
@@ -123,6 +133,7 @@ WARNING: Il `tridentctl` file binario per Linux fornito nel file zip del program
 
 
 
+[[enhancements]]
 === Miglioramenti
 
 
@@ -142,6 +153,7 @@ Aggiunto supporto per Kubernetes 1,28.
 
 
 
+[[advanced-features-available-in-astra-control]]
 === Funzionalità avanzate disponibili in Astra Control
 
 Con Astra Trident 23,10, un nuovo componente software chiamato Astra Control Provivisioner è disponibile per gli utenti con licenza Astra Control. Questo provisioner fornisce l'accesso a un superset di funzionalità avanzate di gestione e provisioning dello storage, oltre a quelle supportate da Astra Trident. Per la release 23,10, queste funzionalità includono:
@@ -156,16 +168,19 @@ link:https://docs.netapp.com/us-en/astra-control-center/release-notes/whats-new.
 
 
 
+[[changes-in-23-07-1]]
 == Modifiche nel 23.07.1
 
 *Kubernetes:* eliminazione di daemonset fissa per supportare aggiornamenti senza downtime (link:https://github.com/NetApp/trident/issues/740["Problema n. 740"^]).
 
 
 
+[[changes-in-23-07]]
 == Modifiche nel 23,07
 
 
 
+[[fixes]]
 === Correzioni
 
 
@@ -189,6 +204,7 @@ link:https://docs.netapp.com/us-en/astra-control-center/release-notes/whats-new.
 
 
 
+[[enhancements]]
 === Miglioramenti
 
 
@@ -224,6 +240,7 @@ Sono stati apportati molti miglioramenti a livello organizzativo e di formattazi
 
 
 
+[[deprecations]]
 === Dipendenze
 
 
@@ -237,6 +254,7 @@ Sono stati apportati molti miglioramenti a livello organizzativo e di formattazi
 
 
 
+[[changes-in-23-04]]
 == Modifiche nel 23,04
 
 
@@ -244,6 +262,7 @@ IMPORTANT: Force volume Detach for ONTAP-SAN-* Volumes è supportato solo con le
 
 
 
+[[fixes]]
 === Correzioni
 
 * Fixed Trident Operator to Use IPv6 localhost for installation when specified in spec.
@@ -260,6 +279,7 @@ IMPORTANT: Force volume Detach for ONTAP-SAN-* Volumes è supportato solo con le
 
 
 
+[[enhancements]]
 === Miglioramenti
 
 * Kubernetes:
@@ -281,16 +301,19 @@ IMPORTANT: Force volume Detach for ONTAP-SAN-* Volumes è supportato solo con le
 
 
 
+[[deprecations]]
 === Dipendenze
 
 **Kubernetes:** gli igroup con ambito backend non verranno più creati quando si configurano i driver ONTAP-san e ONTAP-san-economy (link:https://github.com/NetApp/trident/issues/758["Problema n. 758"]).
 
 
 
+[[changes-in-23-01-1]]
 == Modifiche nel 23.01.1
 
 
 
+[[fixes]]
 === Correzioni
 
 * Fixed Trident Operator to Use IPv6 localhost for installation when specified in spec.
@@ -302,6 +325,7 @@ IMPORTANT: Force volume Detach for ONTAP-SAN-* Volumes è supportato solo con le
 
 
 
+[[changes-in-23-01]]
 == Modifiche nel 23,01
 
 
@@ -309,6 +333,7 @@ IMPORTANT: Kubernetes 1,27 è ora supportato in Trident. Aggiornare Astra Triden
 
 
 
+[[fixes]]
 === Correzioni
 
 * Kubernetes: Aggiunte opzioni per escludere la creazione di criteri di protezione del pod per correggere le installazioni di Trident tramite Helm (link:https://github.com/NetApp/trident/issues/794["Numeri 783, 794"^]).
@@ -316,6 +341,7 @@ IMPORTANT: Kubernetes 1,27 è ora supportato in Trident. Aggiornare Astra Triden
 
 
 
+[[enhancements]]
 === Miglioramenti
 
 .Kubernetes
@@ -338,6 +364,7 @@ IMPORTANT: Kubernetes 1,27 è ora supportato in Trident. Aggiornare Astra Triden
 
 
 
+[[deprecations]]
 === Dipendenze
 
 * Kubernetes: Aggiornato il numero minimo di Kubernetes supportati a 1.21.
@@ -346,6 +373,7 @@ IMPORTANT: Kubernetes 1,27 è ora supportato in Trident. Aggiornare Astra Triden
 
 
 
+[[changes-in-22-10]]
 == Modifiche nel 22,10
 
 *Prima di eseguire l'aggiornamento ad Astra Trident 22.10, è necessario leggere le seguenti informazioni critiche.*
@@ -363,6 +391,7 @@ L'utilizzo di una configurazione non multipathing o di `find_multipaths: yes` un
 ====
 
 
+[[fixes]]
 === Correzioni
 
 * Risolto il problema specifico del backend ONTAP creato utilizzando il `credentials` campo che non riesce a venire online durante l'aggiornamento 22.07.0 (link:https://github.com/NetApp/trident/issues/759["Problema n. 759"^]).
@@ -375,6 +404,7 @@ L'utilizzo di una configurazione non multipathing o di `find_multipaths: yes` un
 
 
 
+[[enhancements]]
 === Miglioramenti
 
 * Kubernetes:
@@ -394,6 +424,7 @@ L'utilizzo di una configurazione non multipathing o di `find_multipaths: yes` un
 
 
 
+[[deprecations]]
 === Dipendenze
 
 * **Kubernetes:** aggiornato il numero minimo di Kubernetes supportati a 1.20.
@@ -403,10 +434,12 @@ L'utilizzo di una configurazione non multipathing o di `find_multipaths: yes` un
 
 
 
+[[changes-in-22-07]]
 == Modifiche nel 22,07
 
 
 
+[[fixes]]
 === Correzioni
 
 **Kubernetes**
@@ -417,6 +450,7 @@ L'utilizzo di una configurazione non multipathing o di `find_multipaths: yes` un
 
 
 
+[[enhancements]]
 === Miglioramenti
 
 * Transizione da k8s.gcr.io a registry.k8s.io come registro predefinito per le immagini CSI
@@ -428,6 +462,7 @@ L'utilizzo di una configurazione non multipathing o di `find_multipaths: yes` un
 
 
 
+[[deprecations]]
 === Dipendenze
 
 * **Kubernetes:** aggiornato il numero minimo di Kubernetes supportati a 1.19.
@@ -436,6 +471,7 @@ L'utilizzo di una configurazione non multipathing o di `find_multipaths: yes` un
 
 
 
+[[removals]]
 === Rimozioni
 
 * Il driver CVS AWS (obsoleto dal 22.04) è stato rimosso.
@@ -449,12 +485,14 @@ L'utilizzo di una configurazione non multipathing o di `find_multipaths: yes` un
 
 
 
+[[documentation]]
 === Documentazione
 
 È stata aggiunta una nuova link:https://docs.netapp.com/us-en/trident/trident-reference/pod-security.html["Standard di sicurezza Pod"]sezione (PSS) con i dettagli delle autorizzazioni abilitate da Astra Trident all'installazione.
 
 
 
+[[changes-in-22-04]]
 == Modifiche nel 22,04
 
 NetApp migliora e perfeziona continuamente i suoi prodotti e servizi. Ecco alcune delle ultime funzionalità di Astra Trident. Per le versioni precedenti, fare riferimento alle versioni precedenti della documentazione.
@@ -464,6 +502,7 @@ IMPORTANT: Se si sta eseguendo l'aggiornamento da qualsiasi precedente release d
 
 
 
+[[fixes]]
 === Correzioni
 
 * Analisi migliorata dei nomi degli iniziatori iSCSI. (link:https://github.com/NetApp/trident/issues/681["Numero GitHub 681"^])
@@ -478,6 +517,7 @@ IMPORTANT: Se si sta eseguendo l'aggiornamento da qualsiasi precedente release d
 
 
 
+[[enhancements]]
 === Miglioramenti
 
 * Le connessioni in entrata agli endpoint sicuri di Trident ora richiedono almeno TLS 1.3. (link:https://github.com/NetApp/trident/issues/698["Numero GitHub 698"^])
@@ -488,16 +528,19 @@ IMPORTANT: Se si sta eseguendo l'aggiornamento da qualsiasi precedente release d
 
 
 
+[[removals]]
 === Rimozioni
 
 Il driver e-Series (disattivato dal 20.07) è stato rimosso.
 
 
 
+[[changes-in-22-01-1]]
 == Modifiche nel 22.01.1
 
 
 
+[[fixes]]
 === Correzioni
 
 * Risolto il problema di annullamento della pubblicazione dei volumi sui nodi cancellati. (link:https://github.com/NetApp/trident/issues/691["Numero GitHub 691"])
@@ -506,10 +549,12 @@ Il driver e-Series (disattivato dal 20.07) è stato rimosso.
 
 
 
+[[changes-in-22-01-0]]
 == Modifiche nel 22.01.0
 
 
 
+[[fixes]]
 === Correzioni
 
 * *Kubernetes:* aumenta il tempo di tentativi di backoff per la registrazione dei nodi per cluster di grandi dimensioni.
@@ -524,6 +569,7 @@ Il driver e-Series (disattivato dal 20.07) è stato rimosso.
 
 
 
+[[enhancements]]
 === Miglioramenti
 
 * Miglioramenti di Kubernetes:
@@ -538,12 +584,14 @@ Il driver e-Series (disattivato dal 20.07) è stato rimosso.
 
 
 
+[[deprecations]]
 === Dipendenze
 
 L'interfaccia REST di Trident può ascoltare e servire solo a 127.0.0.1 o [::1] indirizzi
 
 
 
+[[changes-in-21-10-1]]
 == Modifiche nel 21.10.1
 
 
@@ -551,6 +599,7 @@ WARNING: La versione v21.10.0 presenta un problema che può mettere il controlle
 
 
 
+[[fixes]]
 === Correzioni
 
 * Correzione della potenziale condizione di gara durante l'importazione di un volume su un backend CVS GCP, con conseguente mancata importazione.
@@ -560,10 +609,12 @@ WARNING: La versione v21.10.0 presenta un problema che può mettere il controlle
 
 
 
+[[changes-in-21-10-0]]
 == Modifiche nel 21.10.0
 
 
 
+[[fixes]]
 === Correzioni
 
 * Risolto il problema a causa del quale i cloni dei volumi XFS non potevano essere montati sullo stesso nodo del volume di origine (problema di GitHub 514).
@@ -584,6 +635,7 @@ WARNING: La versione v21.10.0 presenta un problema che può mettere il controlle
 
 
 
+[[enhancements]]
 === Miglioramenti
 
 * Aggiunto il supporto per `unixPermissions` l'opzione per GCP-CVS Performance Volumes.
@@ -599,6 +651,7 @@ WARNING: La versione v21.10.0 presenta un problema che può mettere il controlle
 
 
 
+[[experimental-enhancements]]
 === Miglioramenti sperimentali
 
 * Aggiunto il supporto per la replica del volume nel `ontap-san` driver.
@@ -607,6 +660,7 @@ WARNING: La versione v21.10.0 presenta un problema che può mettere il controlle
 
 
 
+[[known-issues]]
 == Problemi noti
 
 I problemi noti identificano i problemi che potrebbero impedire l'utilizzo corretto del prodotto.
@@ -630,6 +684,7 @@ NOTE: Non è possibile specificare `dataLIF` su un backend SAN ONTAP. Astra Trid
 
 
 
+[[find-more-information]]
 == Trova ulteriori informazioni
 
 * https://github.com/NetApp/trident["Astra Trident GitHub"^]
